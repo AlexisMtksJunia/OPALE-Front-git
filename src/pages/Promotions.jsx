@@ -19,6 +19,8 @@ const makePromotions = (name, years) =>
     students: 0,
     startDate: '',
     endDate: '',
+    groups: [],
+    specialties: [],
   }))
 
 export default function Promotions() {
@@ -92,6 +94,8 @@ export default function Promotions() {
       students: promo.students ?? 0,
       startDate: promo.startDate || '',
       endDate: promo.endDate || '',
+      groups: promo.groups || [],
+      specialties: promo.specialties || [],
     })
   }
 
@@ -128,6 +132,32 @@ export default function Promotions() {
 
     setEditingPromo(null)
   }
+
+  const addGroup = () => {
+  const g = window.prompt('Nom du groupe ? (ex: Groupe A)')
+  if (!g) return
+  setEditingPromo(prev => ({ ...prev, groups: [...prev.groups, g] }))
+}
+
+const removeGroup = (index) => {
+  setEditingPromo(prev => ({
+    ...prev,
+    groups: prev.groups.filter((_, i) => i !== index)
+  }))
+}
+
+const addSpecialty = () => {
+  const s = window.prompt('Nom de la spécialité ?')
+  if (!s) return
+  setEditingPromo(prev => ({ ...prev, specialties: [...prev.specialties, s] }))
+}
+
+const removeSpecialty = (index) => {
+  setEditingPromo(prev => ({
+    ...prev,
+    specialties: prev.specialties.filter((_, i) => i !== index)
+  }))
+}
 
   return (
     <div className="promos">
