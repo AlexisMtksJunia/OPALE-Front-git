@@ -1,6 +1,7 @@
 // src/components/Sidebar.jsx
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import ThemeToggle from './ThemeToggle.jsx'
 import logoFull from '../assets/logo-full.png'
 import logoCompact from '../assets/logo-compact.png'
 import icPlanning from '../assets/ic-planning.png'
@@ -37,6 +38,9 @@ export default function Sidebar() {
                 <img className="logo-compact" src={logoCompact} alt="O"/>
             </div>
 
+            <div className="theme-toggle-wrapper">
+                <ThemeToggle />
+            </div>
             <nav className="nav">
                 {items.map(it => (
                     <NavLink
