@@ -19,8 +19,6 @@ const makePromotions = (name, years) =>
     students: 0,
     startDate: '',
     endDate: '',
-    groups: [],
-    specialties: [],
   }))
 
 export default function Promotions() {
@@ -33,10 +31,8 @@ export default function Promotions() {
   )
 
   // Édition d’une promotion
-  // editingPromo = { cycleId, promoId, name, students, startDate, endDate, groups[], specialties[] }
   const [editingPromo, setEditingPromo] = useState(null)
-  const [newGroup, setNewGroup] = useState('')
-  const [newSpec, setNewSpec] = useState('')
+  // editingPromo = { cycleId, promoId, name, students, startDate, endDate }
 
   const addCycle = () => {
     const name = (window.prompt('Nom du cycle (diplôme) ?', 'Nouveau cycle') || '').trim()
@@ -84,6 +80,7 @@ export default function Promotions() {
     )
 
   const openEditPromotion = (cycleId, promoId) => {
+    // On récupère la promo dans le state actuel
     const cycle = cycles.find(c => c.id === cycleId)
     const promo = cycle?.promotions.find(p => p.id === promoId)
     if (!cycle || !promo) return
@@ -95,59 +92,13 @@ export default function Promotions() {
       students: promo.students ?? 0,
       startDate: promo.startDate || '',
       endDate: promo.endDate || '',
-      groups: promo.groups || [],
-      specialties: promo.specialties || [],
     })
-    setNewGroup('')
-    setNewSpec('')
   }
 
-  const closeEditPromotion = () => {
-    setEditingPromo(null)
-    setNewGroup('')
-    setNewSpec('')
-  }
+  const closeEditPromotion = () => setEditingPromo(null)
 
   const handleEditFieldChange = (field, value) => {
     setEditingPromo(prev => (prev ? { ...prev, [field]: value } : prev))
-  }
-
-  const handleAddGroup = () => {
-    if (!editingPromo) return
-    const value = newGroup.trim()
-    if (!value) return
-    setEditingPromo(prev => ({
-      ...prev,
-      groups: [...prev.groups, value],
-    }))
-    setNewGroup('')
-  }
-
-  const handleRemoveGroup = (name) => {
-    if (!editingPromo) return
-    setEditingPromo(prev => ({
-      ...prev,
-      groups: prev.groups.filter(g => g !== name),
-    }))
-  }
-
-  const handleAddSpec = () => {
-    if (!editingPromo) return
-    const value = newSpec.trim()
-    if (!value) return
-    setEditingPromo(prev => ({
-      ...prev,
-      specialties: [...prev.specialties, value],
-    }))
-    setNewSpec('')
-  }
-
-  const handleRemoveSpec = (name) => {
-    if (!editingPromo) return
-    setEditingPromo(prev => ({
-      ...prev,
-      specialties: prev.specialties.filter(s => s !== name),
-    }))
   }
 
   const handleSavePromotion = (event) => {
@@ -167,8 +118,6 @@ export default function Promotions() {
               students: Number(editingPromo.students) || 0,
               startDate: editingPromo.startDate,
               endDate: editingPromo.endDate,
-              groups: editingPromo.groups,
-              specialties: editingPromo.specialties,
             }
             console.log('[PROMO] updated', updated)
             return updated
@@ -177,7 +126,7 @@ export default function Promotions() {
       })
     )
 
-    closeEditPromotion()
+    setEditingPromo(null)
   }
 
   return (
@@ -241,6 +190,7 @@ export default function Promotions() {
           </section>
         ))}
 
+        {/* Carte "Ajouter un cycle" — toujours en dernier dans le flux grid */}
         <button
           type="button"
           className="card add-cycle-card"
@@ -258,144 +208,49 @@ export default function Promotions() {
           <form className="card promo-edit-card" onSubmit={handleSavePromotion}>
             <h3 className="promo-edit-title">Modifier la promotion</h3>
 
-            <div className="promo-edit-layout">
-              {/* Colonne gauche : infos principales */}
-              <section className="promo-edit-main">
-                <h4 className="promo-edit-section-title">Informations principales</h4>
-                <div className="promo-edit-grid">
-                  <label className="promo-edit-field">
-                    <span className="promo-edit-label">Nom</span>
-                    <input
-                      type="text"
-                      className="promo-edit-input"
-                      value={editingPromo.name}
-                      onChange={(e) => handleEditFieldChange('name', e.target.value)}
-                      required
-                    />
-                  </label>
+            <div className="promo-edit-grid">
+              <label className="promo-edit-field">
+                <span className="promo-edit-label">Nom</span>
+                <input
+                  type="text"
+                  className="promo-edit-input"
+                  value={editingPromo.name}
+                  onChange={(e) => handleEditFieldChange('name', e.target.value)}
+                  required
+                />
+              </label>
 
-                  <label className="promo-edit-field">
-                    <span className="promo-edit-label">Nombre d&apos;étudiants</span>
-                    <input
-                      type="number"
-                      min="0"
-                      step="1"
-                      className="promo-edit-input"
-                      value={editingPromo.students}
-                      onChange={(e) => handleEditFieldChange('students', e.target.value)}
-                    />
-                  </label>
+              <label className="promo-edit-field">
+                <span className="promo-edit-label">Nombre d&apos;étudiants</span>
+                <input
+                  type="number"
+                  min="0"
+                  step="1"
+                  className="promo-edit-input"
+                  value={editingPromo.students}
+                  onChange={(e) => handleEditFieldChange('students', e.target.value)}
+                />
+              </label>
 
-                  <label className="promo-edit-field">
-                    <span className="promo-edit-label">Date de début (rentrée)</span>
-                    <input
-                      type="date"
-                      className="promo-edit-input"
-                      value={editingPromo.startDate}
-                      onChange={(e) => handleEditFieldChange('startDate', e.target.value)}
-                    />
-                  </label>
+              <label className="promo-edit-field">
+                <span className="promo-edit-label">Date de début (rentrée)</span>
+                <input
+                  type="date"
+                  className="promo-edit-input"
+                  value={editingPromo.startDate}
+                  onChange={(e) => handleEditFieldChange('startDate', e.target.value)}
+                />
+              </label>
 
-                  <label className="promo-edit-field">
-                    <span className="promo-edit-label">Date de fin</span>
-                    <input
-                      type="date"
-                      className="promo-edit-input"
-                      value={editingPromo.endDate}
-                      onChange={(e) => handleEditFieldChange('endDate', e.target.value)}
-                    />
-                  </label>
-                </div>
-              </section>
-
-              {/* Colonne droite : Groupes + Spécialités */}
-              <section className="promo-edit-side">
-                <div className="promo-edit-panel">
-                  <h4 className="promo-edit-section-title">Groupes</h4>
-                  <div className="promo-edit-chips">
-                    {editingPromo.groups.length === 0 && (
-                      <p className="promo-edit-empty">Aucun groupe défini.</p>
-                    )}
-                    {editingPromo.groups.map(g => (
-                      <button
-                        key={g}
-                        type="button"
-                        className="promo-chip"
-                        onClick={() => handleRemoveGroup(g)}
-                        title="Supprimer ce groupe"
-                      >
-                        <span>{g}</span>
-                        <span className="promo-chip-close" aria-hidden="true">×</span>
-                      </button>
-                    ))}
-                  </div>
-                  <div className="promo-edit-inline-form">
-                    <input
-                      type="text"
-                      className="promo-edit-input"
-                      placeholder="Nom du groupe"
-                      value={newGroup}
-                      onChange={(e) => setNewGroup(e.target.value)}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter') {
-                          e.preventDefault()
-                          handleAddGroup()
-                        }
-                      }}
-                    />
-                    <button
-                      type="button"
-                      className="btn-tertiary"
-                      onClick={handleAddGroup}
-                    >
-                      Ajouter
-                    </button>
-                  </div>
-                </div>
-
-                <div className="promo-edit-panel">
-                  <h4 className="promo-edit-section-title">Spécialités</h4>
-                  <div className="promo-edit-chips">
-                    {editingPromo.specialties.length === 0 && (
-                      <p className="promo-edit-empty">Aucune spécialité définie.</p>
-                    )}
-                    {editingPromo.specialties.map(s => (
-                      <button
-                        key={s}
-                        type="button"
-                        className="promo-chip"
-                        onClick={() => handleRemoveSpec(s)}
-                        title="Supprimer cette spécialité"
-                      >
-                        <span>{s}</span>
-                        <span className="promo-chip-close" aria-hidden="true">×</span>
-                      </button>
-                    ))}
-                  </div>
-                  <div className="promo-edit-inline-form">
-                    <input
-                      type="text"
-                      className="promo-edit-input"
-                      placeholder="Nom de la spécialité"
-                      value={newSpec}
-                      onChange={(e) => setNewSpec(e.target.value)}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter') {
-                          e.preventDefault()
-                          handleAddSpec()
-                        }
-                      }}
-                    />
-                    <button
-                      type="button"
-                      className="btn-tertiary"
-                      onClick={handleAddSpec}
-                    >
-                      Ajouter
-                    </button>
-                  </div>
-                </div>
-              </section>
+              <label className="promo-edit-field">
+                <span className="promo-edit-label">Date de fin</span>
+                <input
+                  type="date"
+                  className="promo-edit-input"
+                  value={editingPromo.endDate}
+                  onChange={(e) => handleEditFieldChange('endDate', e.target.value)}
+                />
+              </label>
             </div>
 
             <div className="promo-edit-actions">
