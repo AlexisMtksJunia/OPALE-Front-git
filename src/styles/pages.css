@@ -1,138 +1,3 @@
-/* v1.1.4 — Styles spécifiques aux pages (Promotions, etc.) */
-
-@layer pages {
-  /* Promotions */
-  .promos { /* conteneur global si besoin futur */
-  }
-
-  .promos-header {
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-bottom: 16px;
-  }
-
-  .promos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 16px;
-  }
-
-  .cycle-card {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding: 16px;
-    min-width: 0;
-    box-shadow: var(--shadow-lg);
-  }
-
-  .cycle-head {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    justify-content: space-between;
-    flex-wrap: nowrap;
-  }
-
-  .cycle-name {
-    flex: 1 1 auto;
-    min-width: 0;
-    font-family: 'Nunito', sans-serif;
-    font-size: clamp(18px, 2vw, 28px);
-    font-weight: 700;
-    border: 1px solid #e5e7eb;
-    border-radius: var(--radius-sm);
-    padding: 10px 12px;
-    background: #fff;
-  }
-
-  .cycle-actions {
-    display: flex;
-    gap: 8px;
-    flex: 0 0 auto;
-  }
-
-  .promotions {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .empty {
-    color: var(--muted);
-    font-family: 'Nunito', sans-serif;
-    font-size: clamp(14px, 1.6vw, 18px);
-    padding: 8px 4px;
-  }
-
-  .promo-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    padding: 12px 14px;
-    background: var(--panel-soft);
-    border-radius: 12px;
-    min-width: 0;
-    flex-wrap: nowrap;
-  }
-
-  .promo-label {
-    flex: 1 1 auto;
-    min-width: 0;
-    font-family: 'Roboto', sans-serif;
-    font-size: clamp(16px, 1.6vw, 20px);
-    font-weight: 500;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  @media (max-width: 620px) {
-    .promo-label {
-      white-space: normal;
-    }
-  }
-
-  .promo-actions {
-    display: flex;
-    gap: 8px;
-    flex: 0 0 auto;
-    white-space: nowrap;
-  }
-
-  /* Carte “+ Ajouter un cycle” */
-  .add-cycle-card {
-    display: grid;
-    place-items: center;
-    min-height: 140px;
-    padding: 16px;
-
-    /* ✅ transparent + bordure en tirets (pilotée par tokens) */
-    background: transparent;
-    border: var(--add-cycle-border-width) dashed var(--add-cycle-border-color);
-
-    cursor: pointer;
-    transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
-    box-shadow: var(--shadow-md);
-  }
-
-  .add-cycle-card img {
-    width: clamp(36px, 6vw, 72px);
-    height: clamp(36px, 6vw, 72px);
-    object-fit: contain;
-    opacity: .9;
-  }
-
-  .add-cycle-card:hover {
-    background: transparent;
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-lg);
-  }
-}
-
 /* ========== Édition de promotion (overlay) ========== */
 
 .promo-edit-overlay {
@@ -142,11 +7,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(15, 23, 42, 0.45); /* sombre, semi-transparent */
+  background: rgba(15, 23, 42, 0.45);
 }
 
 .promo-edit-card {
-  width: min(480px, 92vw);
+  width: min(720px, 96vw);
   padding: 20px 20px 16px;
   display: flex;
   flex-direction: column;
@@ -154,12 +19,35 @@
 }
 
 .promo-edit-title {
-  margin: 0 0 4px;
+  margin: 0 0 8px;
   font-family: 'Nunito', sans-serif;
   font-size: 22px;
   font-weight: 700;
 }
 
+/* Layout général : colonne gauche / colonne droite */
+.promo-edit-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.promo-edit-main,
+.promo-edit-side {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.promo-edit-section-title {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* Infos principales */
 .promo-edit-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -188,6 +76,56 @@
   color: var(--text);
 }
 
+/* Panneaux Groupes / Spécialités */
+
+.promo-edit-panel {
+  background: var(--panel-soft);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.promo-edit-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.promo-edit-empty {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.promo-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.promo-chip-close {
+  font-weight: 700;
+}
+
+.promo-edit-inline-form {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.promo-edit-inline-form .promo-edit-input {
+  flex: 1;
+}
+
 .promo-edit-actions {
   display: flex;
   justify-content: flex-end;
@@ -195,9 +133,13 @@
   margin-top: 8px;
 }
 
-@media (max-width: 620px) {
+@media (max-width: 860px) {
   .promo-edit-card {
     width: 94vw;
     padding: 16px 14px 12px;
+  }
+
+  .promo-edit-layout {
+    grid-template-columns: 1fr;
   }
 }
