@@ -25,7 +25,6 @@ export default function Login() {
             <div className="login-logo">
                 <img src={logoFull} alt="Logo OPALE" />
             </div>
-            <h2>Se connecter</h2>
             <form onSubmit={handleSubmit} className="login-form">
                 <div className="input-group">
                     <label htmlFor="username">Nom d'utilisateur</label>
