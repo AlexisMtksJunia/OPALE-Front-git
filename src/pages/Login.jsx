@@ -3,15 +3,15 @@ import { useTheme } from '../hooks/useTheme';  // Hook personnalisé pour gérer
 import ThemeToggle from '../components/ThemeToggle';  // Composant du switch de thème
 import './styles/pages/login/login-page.css';  // Fichier CSS pour le style
 
-const LoginPage: React.FC = () => {
+const LoginPage = () => {
   const { theme } = useTheme();  // Récupère le thème actuel
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLoginChange = (e: React.ChangeEvent<HTMLInputElement>) => setLogin(e.target.value);
-  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value);
+  const handleLoginChange = (e) => setLogin(e.target.value);
+  const handlePasswordChange = (e) => setPassword(e.target.value);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     // Logic for form submission (authentication)
     console.log('Login submitted:', login);
