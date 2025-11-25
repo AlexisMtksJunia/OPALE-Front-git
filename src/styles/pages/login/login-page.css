@@ -8,7 +8,7 @@
     background-color: var(--bg);
     color: var(--text);
     transition: background-color 0.3s, color 0.3s;
-    position: relative;  /* Ajouter position relative pour que le bouton soit positionné correctement */
+    position: relative; /* Assure que l'élément parent est positionné pour le bouton */
 }
 
 .login-logo {
@@ -71,19 +71,23 @@ h2 {
     background-color: var(--brand-hover);
 }
 
+/* Conteneur spécifique pour le bouton ThemeToggle */
+.theme-toggle-wrapper {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;  /* S'assurer que le bouton est au-dessus des autres éléments */
+}
+
 /* Position et taille du bouton ThemeToggle */
 .theme-toggle-btn {
-    position: absolute;
-    top: 20px;  /* Décale le bouton depuis le haut */
-    right: 20px;  /* Décale le bouton depuis la droite */
     background: transparent;
     border: none;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 10;  /* Assure que le bouton est au-dessus des autres éléments */
-    padding: 5px;  /* Ajout d'un peu de padding pour mieux espacer l'icône et le texte */
+    padding: 5px;
 }
 
 /* Taille du bouton de bascule */
@@ -97,7 +101,7 @@ h2 {
 
 .theme-toggle-text {
     color: var(--text);
-    font-size: 14px;  /* Taille du texte */
+    font-size: 14px;  /* Ajuste la taille du texte */
 }
 
 /* Ajuster les styles du bouton en mode sombre */
