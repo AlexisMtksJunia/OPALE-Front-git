@@ -32,7 +32,7 @@ export default function App() {
 
         <Routes>
             <Route element={<AppLayout />}>
-                <Route path="/login" element={<Login />} /> 
+                <Route path="/login" element={<LoginPage />} /> 
                 <Route path="/" element={<Navigate to="/planning" replace />} />
                 <Route path="/planning" element={<PlanningMacro />} />
                 <Route path="/promotions" element={<Promotions />} />
