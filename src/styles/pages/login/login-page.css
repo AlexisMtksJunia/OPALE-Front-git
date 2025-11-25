@@ -6,6 +6,12 @@
     align-items: center;
     height: 100vh;
     background-color: #f4f4f4;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.login-container.dark {
+    background-color: #2c2c2c; /* Couleur de fond sombre */
+    color: #f9f9f9; /* Texte clair */
 }
 
 .login-logo {
@@ -25,6 +31,14 @@ h2 {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.login-form.dark {
+    background: #333; /* Fond sombre pour la forme */
+    border: 1px solid #444; /* Bordure sombre */
 }
 
 .input-group {
@@ -37,10 +51,15 @@ h2 {
 }
 
 .input-group input {
-    width: 250px;
+    width: 100%;
     padding: 10px;
     border-radius: 4px;
     border: 1px solid #ddd;
+    transition: border-color 0.3s;
+}
+
+.input-group input.dark {
+    border-color: #555; /* Bordure sombre pour les champs */
 }
 
 .login-btn {
@@ -55,4 +74,38 @@ h2 {
 
 .login-btn:hover {
     background-color: #0056b3;
+}
+
+/* Style du bouton ThemeToggle */
+.theme-toggle-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.theme-toggle-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #f9f9f9;
+    margin-right: 10px;
+}
+
+.theme-toggle-text {
+    color: #f9f9f9;
+    font-size: 14px;
+}
+
+/* Style du bouton lorsque le mode sombre est activé */
+body.dark .theme-toggle-btn {
+    color: #f9f9f9;
+}
+
+body.dark .theme-toggle-thumb {
+    background-color: #333;
 }
