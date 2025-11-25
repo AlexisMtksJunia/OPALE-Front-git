@@ -27,7 +27,6 @@ export default function Login() {
                 <img src={logoFull} alt="Logo OPALE" />
             </div>
             <ThemeToggle />  {/* Ajouter ici le bouton de bascule de thème */}
-            <h2>Se connecter</h2>
             <form onSubmit={handleSubmit} className="login-form">
                 <div className="input-group">
                     <label htmlFor="username">Nom d'utilisateur</label>
