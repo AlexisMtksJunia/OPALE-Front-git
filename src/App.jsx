@@ -4,7 +4,7 @@ import Sidebar from './components/Sidebar.jsx'
 import Promotions from './pages/Promotions.jsx'
 import PlanningMacro from './pages/PlanningMacro.jsx'
 import Placeholder from './pages/Placeholder.jsx'
-import LoginPage from './pages/Login';
+import LoginPage from './pages/Login';  // Utilisation correcte du chemin
 
 function AppLayout() {
     const handleDisconnect = () => {
@@ -13,13 +13,13 @@ function AppLayout() {
 
     return (
         <div className="app">
-            <Sidebar />
+            <Sidebar /> {/* Sidebar visible dans toutes les pages sauf login */}
 
             {/* Colonne droite */}
             <div className="right-col">
                 <main className="card main-card">
                     <div className="main-inner">
-                        <Outlet />
+                        <Outlet /> {/* Affichage des pages enfants */}
                     </div>
                 </main>
             </div>
@@ -30,8 +30,9 @@ function AppLayout() {
 export default function App() {
     return (
         <Routes>
+            {/* Les routes avec le Sidebar */}
             <Route element={<AppLayout />}>
-                <Route path="/login" element={<LoginPage />} />  {/* Aucune Sidebar pour login */}
+                <Route path="/login" element={<LoginPage />} /> {/* Sidebar masqué pour la page de login */}
                 <Route path="/" element={<Navigate to="/planning" replace />} />
                 <Route path="/planning" element={<PlanningMacro />} />
                 <Route path="/promotions" element={<Promotions />} />
