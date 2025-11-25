@@ -1,56 +1,50 @@
 import React, { useState } from 'react';
-import { useTheme } from '../hooks/useTheme';  // Hook personnalisé pour gérer le thème
-import ThemeToggle from '../components/ThemeToggle';  // Composant du switch de thème
-import logoFull from '../assets/logo-full.png'; // Logo OPALE
-import '../styles/pages/login/login-page.css';  // Fichier CSS pour le style
+import '../styles/pages/login/login-page.css';
+import { useNavigate } from 'react-router-dom';
 
-const LoginPage = () => {
-  const { theme } = useTheme();  // Récupère le thème actuel
-  const [login, setLogin] = useState('');
-  const [password, setPassword] = useState('');
+export default function Login() {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
-  const handleLoginChange = (e) => setLogin(e.target.value);
-  const handlePasswordChange = (e) => setPassword(e.target.value);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (username && password) {
+            // Logique de connexion (validation ou appel API)
+            console.log('Connexion réussie');
+            // Rediriger vers la page principale après la connexion
+            navigate('/planning');
+        } else {
+            console.log('Veuillez entrer un nom d\'utilisateur et un mot de passe');
+        }
+    };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Logic for form submission (authentication)
-    console.log('Login submitted:', login);
-  };
-
-  return (
-    <div className={`login-page ${theme}`}>
-      <div className="login-container">
-        <img src={logoFull} alt="Logo OPALE" className="login-logo" />
-        <form onSubmit={handleSubmit} className="login-form">
-          <div className="form-group">
-            <label htmlFor="login">Login</label>
-            <input 
-              type="text" 
-              id="login" 
-              value={login} 
-              onChange={handleLoginChange} 
-              placeholder="Entrez votre identifiant" 
-              required 
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Mot de passe</label>
-            <input 
-              type="password" 
-              id="password" 
-              value={password} 
-              onChange={handlePasswordChange} 
-              placeholder="Entrez votre mot de passe" 
-              required 
-            />
-          </div>
-          <button type="submit" className="login-button">Se connecter</button>
-        </form>
-        <ThemeToggle />  {/* Le bouton pour changer le thème */}
-      </div>
-    </div>
-  );
-};
-
-export default LoginPage;
+    return (
+        <div className="login-container">
+            <h2>Se connecter</h2>
+            <form onSubmit={handleSubmit} className="login-form">
+                <div className="input-group">
+                    <label htmlFor="username">Nom d'utilisateur</label>
+                    <input
+                        type="text"
+                        id="username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        required
+                    />
+                </div>
+                <div className="input-group">
+                    <label htmlFor="password">Mot de passe</label>
+                    <input
+                        type="password"
+                        id="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                </div>
+                <button type="submit" className="login-btn">Se connecter</button>
+            </form>
+        </div>
+    );
+}
