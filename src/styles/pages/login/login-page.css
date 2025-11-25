@@ -8,6 +8,14 @@
     background-color: #f4f4f4;
 }
 
+.login-logo {
+    margin-bottom: 20px;
+}
+
+.login-logo img {
+    max-width: 200px; /* Ajuster la taille du logo */
+}
+
 h2 {
     margin-bottom: 20px;
 }
