@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import '../styles/pages/login/login-page.css';
 import { useNavigate } from 'react-router-dom';
-import logoFull from '../assets/logo-full.png'; // Assurez-vous de bien importer le logo
-import ThemeToggle from '../components/ThemeToggle.jsx'; // Importer le composant ThemeToggle
+import logoFull from '../assets/logo-full.png';
+import ThemeToggle from '../components/ThemeToggle.jsx';
 
 export default function Login() {
     const [username, setUsername] = useState('');
@@ -26,7 +26,12 @@ export default function Login() {
             <div className="login-logo">
                 <img src={logoFull} alt="Logo OPALE" />
             </div>
-            <ThemeToggle />  {/* Ajouter ici le bouton de bascule de thème */}
+            
+            {/* Conteneur spécifique pour le bouton ThemeToggle */}
+            <div className="theme-toggle-wrapper">
+                <ThemeToggle />
+            </div>
+            
             <form onSubmit={handleSubmit} className="login-form">
                 <div className="input-group">
                     <label htmlFor="username">Nom d'utilisateur</label>
