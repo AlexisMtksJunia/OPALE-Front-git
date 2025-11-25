@@ -1,6 +1,6 @@
 // src/components/Sidebar.jsx
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'  // Importer useNavigate pour la redirection
 import logoFull from '../assets/logo-full.png'
 import logoCompact from '../assets/logo-compact.png'
 import icPlanning from '../assets/ic-planning.png'
@@ -21,14 +21,19 @@ const items = [
 ]
 
 export default function Sidebar() {
+    const navigate = useNavigate();  // Initialiser le hook de navigation
+
     const handleDisconnect = () => {
         console.log('[AUTH] Se déconnecter')
-        // plus tard : appel API + redirection login
+        // Plus tard, vous pouvez ajouter l'appel à l'API pour la déconnexion ici.
+        
+        // Redirection vers la page de login
+        navigate('/login');  // Cela redirige vers la route '/login'
     }
 
     const handleContact = () => {
         console.log('[AUTH] Page contact')
-        // plus tard : appel API + redirection login
+        // Vous pouvez ajouter des appels API pour la page contact si nécessaire.
     }
 
     return (
