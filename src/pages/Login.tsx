@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useTheme } from '../hooks/useTheme';  // Hook personnalisé pour gérer le thème
 import ThemeToggle from '../components/ThemeToggle';  // Composant du switch de thème
-import './LoginPage.css';  // Fichier CSS pour le style
+import './login-page.css';  // Fichier CSS pour le style
 
 const LoginPage: React.FC = () => {
   const { theme } = useTheme();  // Récupère le thème actuel
