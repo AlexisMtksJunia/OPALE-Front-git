@@ -6,6 +6,7 @@
   height: 100vh;
   background-color: var(--background-color);
   transition: background-color 0.3s ease;
+  padding: 0 20px; /* Ajouter un peu de padding sur les côtés */
 }
 
 .login-page.light {
@@ -20,20 +21,21 @@
   text-align: center;
   width: 100%;
   max-width: 400px;
-  padding: 20px;
+  padding: 30px;
   background-color: var(--container-bg);
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 20px; /* Pour ajouter de l'espace autour */
 }
 
 .login-logo {
   width: 100%;
   max-width: 200px;
-  margin-bottom: 20px;
+  margin-bottom: 40px; /* Ajout d'espace en bas du logo */
 }
 
 .login-form .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 25px; /* Plus d'espace entre les champs */
   text-align: left;
 }
 
@@ -44,7 +46,7 @@
 
 .login-form input {
   width: 100%;
-  padding: 10px;
+  padding: 12px; /* Un peu plus d'espace à l'intérieur du champ */
   font-size: 14px;
   border: 1px solid #ccc;
   border-radius: 4px;
