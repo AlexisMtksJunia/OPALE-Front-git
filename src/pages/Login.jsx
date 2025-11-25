@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/pages/login/login-page.css';
 import { useNavigate } from 'react-router-dom';
+import logoFull from '../assets/logo-full.png';
 
 export default function Login() {
     const [username, setUsername] = useState('');
@@ -21,6 +22,9 @@ export default function Login() {
 
     return (
         <div className="login-container">
+            <div className="login-logo">
+                <img src={logoFull} alt="Logo OPALE" />
+            </div>
             <h2>Se connecter</h2>
             <form onSubmit={handleSubmit} className="login-form">
                 <div className="input-group">
