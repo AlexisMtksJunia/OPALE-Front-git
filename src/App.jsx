@@ -4,7 +4,7 @@ import Sidebar from './components/Sidebar.jsx'
 import Promotions from './pages/Promotions.jsx'
 import PlanningMacro from './pages/PlanningMacro.jsx'
 import Placeholder from './pages/Placeholder.jsx'
-import LoginPage from './pages/Login';  // Utilisation correcte du chemin
+import Login from './pages/Login';  // Utilisation correcte du chemin
 
 function AppLayout() {
     const handleDisconnect = () => {
