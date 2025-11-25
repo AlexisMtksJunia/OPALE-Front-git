@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import logoFull from '../assets/logo-full.png';
 import logoCompact from '../assets/logo-compact.png';
 import icPlanning from '../assets/ic-planning.png';
@@ -20,13 +20,15 @@ const items = [
 ];
 
 export default function Sidebar() {
-    const location = useLocation();
+    const navigate = useNavigate(); // Pour la redirection
 
     // Si la route est "login", on ne rend pas le sidebar
-    if (location.pathname === '/login') return null;
+    if (window.location.pathname === '/login') return null;
 
     const handleDisconnect = () => {
         console.log('[AUTH] Se déconnecter');
+        // Redirection vers la page login
+        navigate('/login');
     };
 
     const handleContact = () => {
