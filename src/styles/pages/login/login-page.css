@@ -70,32 +70,39 @@ h2 {
     background-color: var(--brand-hover);
 }
 
-/* Style du bouton ThemeToggle */
+/* Position et taille du bouton ThemeToggle */
 .theme-toggle-btn {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 20px;  /* Décale le bouton depuis le haut */
+    right: 20px;  /* Décale le bouton depuis la droite */
     background: transparent;
     border: none;
     cursor: pointer;
     display: flex;
     align-items: center;
+    justify-content: center;
+    z-index: 10;  /* Assure que le bouton est au-dessus des autres éléments */
 }
 
+/* Taille du bouton de bascule */
 .theme-toggle-thumb {
-    width: 20px;
-    height: 20px;
+    width: 24px;  /* Augmenter la taille du cercle */
+    height: 24px;
     border-radius: 50%;
     background-color: var(--text);
-    margin-right: 10px;
+    margin-right: 8px;  /* Ajuster l'espace entre le cercle et le texte */
 }
 
 .theme-toggle-text {
     color: var(--text);
-    font-size: 14px;
+    font-size: 14px;  /* Ajuste la taille du texte */
 }
 
-/* Style du bouton lorsque le mode sombre est activé */
+/* Ajuster les styles du bouton en mode sombre */
+body[data-theme="dark"] .theme-toggle-btn {
+    color: var(--text);
+}
+
 body[data-theme="dark"] .theme-toggle-thumb {
     background-color: var(--text);
 }
