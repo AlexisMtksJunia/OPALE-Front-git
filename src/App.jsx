@@ -8,32 +8,31 @@ import LoginPage from './pages/Login';  // Utilisation correcte du chemin
 
 function AppLayout() {
     const handleDisconnect = () => {
-        console.log('[AUTH] Se déconnecter')
-    }
+        console.log('[AUTH] Se déconnecter');
+    };
 
     return (
         <div className="app">
-            <Sidebar /> {/* Sidebar visible dans toutes les pages sauf login */}
+            <Sidebar />
 
             {/* Colonne droite */}
             <div className="right-col">
                 <main className="card main-card">
                     <div className="main-inner">
-                        <Outlet /> {/* Affichage des pages enfants */}
+                        <Outlet />
                     </div>
                 </main>
             </div>
         </div>
-    )
+    );
 }
 
 export default function App() {
     return (
         <Routes>
-            {/* Les routes avec le Sidebar */}
+            <Route path="/" element={<Navigate to="/login" replace />} />
+            <Route path="/login" element={<Login />} />
             <Route element={<AppLayout />}>
-                <Route path="/login" element={<LoginPage />} /> {/* Sidebar masqué pour la page de login */}
-                <Route path="/" element={<Navigate to="/planning" replace />} />
                 <Route path="/planning" element={<PlanningMacro />} />
                 <Route path="/promotions" element={<Promotions />} />
                 <Route path="/evenements" element={<Placeholder title="Événements" />} />
@@ -43,5 +42,5 @@ export default function App() {
                 <Route path="*" element={<Placeholder title="Page introuvable" notFound />} />
             </Route>
         </Routes>
-    )
+    );
 }
