@@ -1,62 +1,59 @@
-// src/components/Sidebar.jsx
-import React from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'  // Importer useNavigate pour la redirection
-import logoFull from '../assets/logo-full.png'
-import logoCompact from '../assets/logo-compact.png'
-import icPlanning from '../assets/ic-planning.png'
-import icPromotions from '../assets/ic-promos.png'
-import icEvenements from '../assets/ic-events.png'
-import icEnseignants from '../assets/ic-profs.png'
-import icSalles from '../assets/ic-salles.png'
-import icLogout from '../assets/ic-logout.png'
-import icContact from '../assets/ic-contact.png'
-import ThemeToggle from './ThemeToggle.jsx'
+import React from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
+import logoFull from '../assets/logo-full.png';
+import logoCompact from '../assets/logo-compact.png';
+import icPlanning from '../assets/ic-planning.png';
+import icPromotions from '../assets/ic-promos.png';
+import icEvenements from '../assets/ic-events.png';
+import icEnseignants from '../assets/ic-profs.png';
+import icSalles from '../assets/ic-salles.png';
+import icLogout from '../assets/ic-logout.png';
+import icContact from '../assets/ic-contact.png';
+import ThemeToggle from './ThemeToggle.jsx';
 
 const items = [
-    { to: '/planning',   label: 'Planning',    ic: icPlanning },
-    { to: '/promotions', label: 'Promotions',  ic: icPromotions },
-    { to: '/evenements', label: 'Evenements',  ic: icEvenements },
-    { to: '/enseignants',label: 'Enseignants', ic: icEnseignants },
-    { to: '/salles',     label: 'Salles',      ic: icSalles },
-]
+    { to: '/planning', label: 'Planning', ic: icPlanning },
+    { to: '/promotions', label: 'Promotions', ic: icPromotions },
+    { to: '/evenements', label: 'Evenements', ic: icEvenements },
+    { to: '/enseignants', label: 'Enseignants', ic: icEnseignants },
+    { to: '/salles', label: 'Salles', ic: icSalles },
+];
 
 export default function Sidebar() {
-    const navigate = useNavigate();  // Initialiser le hook de navigation
+    const location = useLocation();
+
+    // Si la route est "login", on ne rend pas le sidebar
+    if (location.pathname === '/login') return null;
 
     const handleDisconnect = () => {
-        console.log('[AUTH] Se déconnecter')
-        // Plus tard, vous pouvez ajouter l'appel à l'API pour la déconnexion ici.
-        
-        // Redirection vers la page de login
-        navigate('/login');  // Cela redirige vers la route '/login'
-    }
+        console.log('[AUTH] Se déconnecter');
+    };
 
     const handleContact = () => {
-        console.log('[AUTH] Page contact')
-        // Vous pouvez ajouter des appels API pour la page contact si nécessaire.
-    }
+        console.log('[AUTH] Page contact');
+    };
 
     return (
         <aside className="card sidebar">
             <div className="brand">
-                <img className="logo-full" src={logoFull} alt="OPALE"/>
-                <img className="logo-compact" src={logoCompact} alt="O"/>
+                <img className="logo-full" src={logoFull} alt="OPALE" />
+                <img className="logo-compact" src={logoCompact} alt="O" />
             </div>
 
             <div className="theme-toggle-wrapper">
-                <ThemeToggle/>
+                <ThemeToggle />
             </div>
 
             <nav className="nav">
-                {items.map(it => (
+                {items.map((it) => (
                     <NavLink
                         key={it.to}
                         to={it.to}
-                        className={({isActive}) => `nav-btn ${isActive ? 'active' : ''}`}
+                        className={({ isActive }) => `nav-btn ${isActive ? 'active' : ''}`}
                         onClick={() => console.log(`[NAV] ${it.label}`)}
                     >
                         <span className="nav-label">{it.label}</span>
-                        <img className="nav-icon-right" src={it.ic} alt=""/>
+                        <img className="nav-icon-right" src={it.ic} alt="" />
                     </NavLink>
                 ))}
             </nav>
@@ -70,7 +67,7 @@ export default function Sidebar() {
                         aria-label="Se déconnecter"
                         title="Se déconnecter"
                     >
-                        <img src={icLogout} alt=""/>
+                        <img src={icLogout} alt="" />
                     </button>
 
                     <button
@@ -80,10 +77,10 @@ export default function Sidebar() {
                         aria-label="Contact"
                         title="Contact"
                     >
-                        <img src={icContact} alt=""/>
+                        <img src={icContact} alt="" />
                     </button>
                 </div>
             </div>
         </aside>
-    )
+    );
 }
