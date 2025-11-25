@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useTheme } from '../hooks/useTheme';  // Hook personnalisé pour gérer le thème
 import ThemeToggle from '../components/ThemeToggle';  // Composant du switch de thème
+import logoFull from '../assets/logo-full.png'; // Logo OPALE
 import '../styles/pages/login/login-page.css';  // Fichier CSS pour le style
 
 const LoginPage = () => {
@@ -20,7 +21,7 @@ const LoginPage = () => {
   return (
     <div className={`login-page ${theme}`}>
       <div className="login-container">
-        <img src="/assets/logo-full.png" alt="Logo OPALE" className="login-logo" />
+        <img src="../assets/logo-full.png" alt="Logo OPALE" className="login-logo" />
         <form onSubmit={handleSubmit} className="login-form">
           <div className="form-group">
             <label htmlFor="login">Login</label>
