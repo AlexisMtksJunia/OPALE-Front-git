@@ -4,6 +4,7 @@ import Sidebar from './components/Sidebar.jsx'
 import Promotions from './pages/Promotions.jsx'
 import PlanningMacro from './pages/PlanningMacro.jsx'
 import Placeholder from './pages/Placeholder.jsx'
+import LoginPage from './pages/Login'; 
 
 function AppLayout() {
     const handleDisconnect = () => {
@@ -31,7 +32,7 @@ export default function App() {
 
         <Routes>
             <Route element={<AppLayout />}>
-
+                <Route path="/login" element={<Login />} /> 
                 <Route path="/" element={<Navigate to="/planning" replace />} />
                 <Route path="/planning" element={<PlanningMacro />} />
                 <Route path="/promotions" element={<Promotions />} />
