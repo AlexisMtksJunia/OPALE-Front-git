@@ -20,7 +20,8 @@
             background-color 120ms ease;
 
         min-height: 4.5rem;
-        min-width: 0; /* 👈 ESSENTIEL pour permettre au contenu de shrink */
+        width: 100%;
+        min-width: 0; /* permet au texte de gérer l'espace proprement */
     }
 
     .room-card:hover {
@@ -37,6 +38,7 @@
     .room-card-main {
         flex: 1 1 auto; /* 👈 permet au contenu de s'adapter */
         min-width: 0;   /* 👈 empêche l'overflow du texte */
+        flex: 1;
         padding: 0.75rem 0.9rem 0.75rem 1rem;
         display: flex;
         flex-direction: column;
