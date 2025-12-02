@@ -4,34 +4,40 @@
     .room-detail-overlay {
         position: fixed;
         inset: 0;
-        background: rgba(15, 23, 42, 0.45);
+        /* overlay un peu plus visible */
+        background: rgba(15, 23, 42, 0.55);
         display: flex;
         align-items: center;
         justify-content: center;
-        z-index: 2100;
+        z-index: 2600; /* au-dessus du contenu principal */
     }
 
     .room-detail-card {
-        width: min(480px, 100% - 2rem);
-        max-height: min(600px, 100% - 2rem);
-        background: var(--color-surface, #fff);
+        width: min(520px, 100% - 2.5rem);
+        max-height: min(620px, 100% - 2.5rem);
+        background: var(--color-surface, #ffffff);
         border-radius: 1rem;
+        /* bien détaché du fond */
+        border: 1px solid var(--border, rgba(148, 163, 184, 0.6));
         box-shadow: var(--shadow-2xl);
-        padding: 1.5rem 1.5rem 1.25rem;
+        padding: 1.6rem 1.6rem 1.3rem;
         position: relative;
         display: flex;
         flex-direction: column;
         gap: 1.25rem;
     }
 
+    /* rendu spécifique en thème sombre pour éviter qu'elle se confonde avec la page */
     [data-theme='dark'] .room-detail-card {
-        background: var(--panel-strong);
+        background: #2a3442; /* même logique que les cards cycles/teachers */
+        border-color: rgba(148, 163, 184, 0.45);
+        box-shadow: 0 22px 45px rgba(15, 23, 42, 0.75);
     }
 
     .room-detail-close {
         position: absolute;
-        inset-inline-end: 0.75rem;
-        top: 0.75rem;
+        inset-inline-end: 0.85rem;
+        top: 0.85rem;
         border: none;
         background: transparent;
         font-size: 1.1rem;
