@@ -11,7 +11,7 @@ interface DefaultCycleSeed {
 // 💾 Données de test (extraites de usePromotionCycles)
 export const DEFAULT_CYCLES_SEED: DefaultCycleSeed[] = [
     { id: 'cycle-adi',   name: 'ADI',   years: 2 },
-    { id: 'cycle-sir',   name: 'SIR',   years: 2 },
+    { id: 'cycle-sir',   name: 'CIR',   years: 2 },
     { id: 'cycle-isen',  name: 'ISEN',  years: 3 },
     { id: 'cycle-fisen', name: 'FISEN', years: 3 },
 ]
