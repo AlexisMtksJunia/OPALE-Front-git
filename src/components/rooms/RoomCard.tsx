@@ -40,14 +40,9 @@ export default function RoomCard({ room, onSelect }: RoomCardProps) {
         onSelect()
     }
 
-    const typeClass = room.mainType.toLowerCase() // td, tp_electronique, ...
-
     return (
-        <article
-            className={`room-card room-card--${typeClass}`}
-            onClick={handleClick}
-        >
-            <div className={`room-card-icon room-card-icon--${typeClass}`}>
+        <article className="room-card" onClick={handleClick}>
+            <div className="room-card-icon">
                 <img src={icon} alt={typeLabel} className="room-card-base-icon" />
             </div>
 
