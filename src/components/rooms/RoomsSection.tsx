@@ -37,7 +37,6 @@ export default function RoomsSection({ floor, rooms, onSelectRoom }: RoomsSectio
                         {FLOOR_LABELS[floor]} · {rooms.length} salle
                         {rooms.length > 1 ? 's' : ''}
                     </h2>
-                    <p className="rooms-section-sub">Codes J{floor}xx</p>
                 </div>
 
                 <button
