@@ -1,4 +1,3 @@
-// src/components/rooms/RoomTypeBadge.tsx
 import React from 'react'
 import { RoomType } from '../../models/Room'
 
@@ -10,13 +9,9 @@ const ROOM_TYPE_SHORT: Record<RoomType, string> = {
     AUTRE: 'AUT',
 }
 
-interface RoomTypeBadgeProps {
-    type: RoomType
-}
-
-export default function RoomTypeBadge({ type }: RoomTypeBadgeProps) {
+export default function RoomTypeBadge({ type }: { type: RoomType }) {
     return (
-        <span className={`room-type-badge room-type-badge-${type.toLowerCase()}`}>
+        <span className={`room-badge room-badge-${type.toLowerCase()}`}>
             {ROOM_TYPE_SHORT[type]}
         </span>
     )
