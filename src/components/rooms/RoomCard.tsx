@@ -8,7 +8,6 @@ import icTPE from '../../assets/ic-room-tp-electronique.png'
 import icTPN from '../../assets/ic-room-tp-numerique.png'
 import icProjet from '../../assets/ic-room-projet.png'
 import icAutre from '../../assets/ic-room-autre.png'
-import RoomTypeBadge from './RoomTypeBadge'
 
 interface RoomCardProps {
     room: Room
@@ -48,10 +47,7 @@ export default function RoomCard({ room, onSelect }: RoomCardProps) {
             </div>
 
             <div className="room-card-content">
-                <div className="room-card-header-line">
-                    <div className="room-card-name">{fullName}</div>
-                    <RoomTypeBadge type={room.mainType} />
-                </div>
+                <div className="room-card-name">{fullName}</div>
                 <div className="room-card-meta">
                     <span className="room-card-code">{room.name}</span>
                     <span className="room-card-separator">•</span>
