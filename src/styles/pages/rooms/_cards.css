@@ -117,4 +117,19 @@
     .room-card-main-type {
         text-transform: none;
     }
+
+    .room-badge {
+    padding: 2px 6px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    background: var(--panel-ghost);
+    border: 1px solid var(--border-subtle);
+}
+
+.room-badge-td { color: #1d4ed8; border-color: #1d4ed8; }
+.room-badge-tp_electronique { color: #047857; border-color: #047857; }
+.room-badge-tp_numerique { color: #0369a1; border-color: #0369a1; }
+.room-badge-projet { color: #92400e; border-color: #92400e; }
+.room-badge-autre { color: #475569; border-color: #475569; }
 }
