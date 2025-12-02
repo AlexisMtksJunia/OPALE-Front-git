@@ -1,0 +1,120 @@
+/* src/styles/pages/rooms/_cards.css */
+
+@layer pages {
+    .room-card {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem 0.9rem;
+        border-radius: 0.9rem;
+        background: var(--panel-soft);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow-sm);
+        cursor: pointer;
+        transition:
+            transform 120ms ease,
+            box-shadow 120ms ease,
+            border-color 120ms ease,
+            background 120ms ease;
+    }
+
+    .room-card:hover {
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--primary-soft);
+        background: var(--panel-soft-hover, var(--panel-soft));
+    }
+
+    .room-card-icon {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
+    }
+
+    .room-card-base-icon {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        filter: var(--icon-filter, none);
+    }
+
+    .room-card-type-pill {
+        position: absolute;
+        right: -6px;
+        bottom: -4px;
+        padding: 2px 6px;
+        border-radius: 999px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        border: 1px solid transparent;
+    }
+
+    /* Couleurs par type */
+    .room-card-type-pill-td {
+        background: rgba(59, 130, 246, 0.12);
+        color: #1d4ed8;
+        border-color: rgba(59, 130, 246, 0.45);
+    }
+
+    .room-card-type-pill-tp_electronique {
+        background: rgba(16, 185, 129, 0.12);
+        color: #047857;
+        border-color: rgba(16, 185, 129, 0.45);
+    }
+
+    .room-card-type-pill-tp_numerique {
+        background: rgba(14, 165, 233, 0.14);
+        color: #0369a1;
+        border-color: rgba(14, 165, 233, 0.5);
+    }
+
+    .room-card-type-pill-projet {
+        background: rgba(234, 179, 8, 0.12);
+        color: #92400e;
+        border-color: rgba(234, 179, 8, 0.45);
+    }
+
+    .room-card-type-pill-autre {
+        background: rgba(148, 163, 184, 0.16);
+        color: #475569;
+        border-color: rgba(148, 163, 184, 0.6);
+    }
+
+    .room-card-content {
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.15rem;
+    }
+
+    .room-card-name {
+        font-weight: 600;
+        font-size: 0.98rem;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .room-card-meta {
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-size: 0.8rem;
+        color: var(--muted);
+    }
+
+    .room-card-code {
+        font-variant-numeric: tabular-nums;
+    }
+
+    .room-card-separator {
+        opacity: 0.5;
+    }
+
+    .room-card-main-type {
+        text-transform: none;
+    }
+}
