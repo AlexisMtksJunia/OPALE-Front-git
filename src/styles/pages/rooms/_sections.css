@@ -1,6 +1,10 @@
 /* src/styles/pages/rooms/_sections.css */
 
 @layer pages {
+    .rooms-section:first-of-type {
+        margin-top: 0rem;
+    }
+    
     .rooms-section:last-of-type {
         margin-top: 0.5rem;
     }
