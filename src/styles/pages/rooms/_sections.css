@@ -58,7 +58,7 @@
         content: '⌃';
         display: block;
         transform: translateY(1px);
-    
+    }
 
     .rooms-section-chevron.is-open {
         transform: rotate(180deg);
