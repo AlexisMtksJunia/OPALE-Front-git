@@ -21,6 +21,11 @@ export default function Rooms() {
 
     return (
         <>
+            <h1 className="page-title">Salles</h1>
+                    <p className="page-sub">
+                        Liste des salles par étage avec types et commentaires (mock
+                        front uniquement).
+                    </p>
             <div className="rooms-page">
                 <header className="rooms-page-header">
                     <h1 className="page-title">Salles</h1>
