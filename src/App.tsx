@@ -36,7 +36,6 @@ export default function App(): Element {
     const { theme } = useTheme()
 
     return (
-        <div className={theme}>
             <Routes>
                 {/* Routes sans layout */}
                 <Route path="/" element={<Navigate to="/login" replace />} />
@@ -53,6 +52,5 @@ export default function App(): Element {
                     <Route path="*" element={<Placeholder title="Page introuvable" notFound />} />
                 </Route>
             </Routes>
-        </div>
     )
 }
