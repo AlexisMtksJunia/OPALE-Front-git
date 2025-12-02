@@ -1,0 +1,121 @@
+/* src/styles/pages/rooms/_detail-modal.css */
+
+@layer pages {
+    .room-detail-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.45);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2100;
+    }
+
+    .room-detail-card {
+        width: min(480px, 100% - 2rem);
+        max-height: min(600px, 100% - 2rem);
+        background: var(--color-surface, #fff);
+        border-radius: 1rem;
+        box-shadow: var(--shadow-2xl);
+        padding: 1.5rem 1.5rem 1.25rem;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    [data-theme='dark'] .room-detail-card {
+        background: var(--panel-strong);
+    }
+
+    .room-detail-close {
+        position: absolute;
+        inset-inline-end: 0.75rem;
+        top: 0.75rem;
+        border: none;
+        background: transparent;
+        font-size: 1.1rem;
+        cursor: pointer;
+        line-height: 1;
+        color: var(--muted-strong, #64748b);
+    }
+
+    .room-detail-close:hover {
+        color: var(--primary);
+    }
+
+    .room-detail-header {
+        padding-right: 2rem;
+    }
+
+    .room-detail-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+    }
+
+    .room-detail-sub {
+        margin-top: 0.25rem;
+        font-size: 0.9rem;
+        color: var(--muted);
+    }
+
+    .room-detail-section {
+        border-top: 1px solid var(--border-subtle);
+        padding-top: 0.9rem;
+    }
+
+    .room-detail-section-title {
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 0.6rem;
+    }
+
+    .room-detail-types {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .room-type-chip {
+        border-radius: 999px;
+        border: 1px solid var(--border-subtle);
+        background: var(--panel-ghost);
+        padding: 0.3rem 0.7rem;
+        font-size: 0.8rem;
+        cursor: pointer;
+        transition:
+            background 120ms ease,
+            border-color 120ms ease,
+            transform 120ms ease;
+    }
+
+    .room-type-chip:hover {
+        transform: translateY(-1px);
+        border-color: var(--primary-soft);
+    }
+
+    .room-type-chip-selected {
+        background: var(--primary-soft);
+        border-color: var(--primary);
+        color: var(--primary-strong-contrast, #0f172a);
+    }
+
+    .room-detail-textarea {
+        width: 100%;
+        min-height: 80px;
+        resize: vertical;
+        border-radius: 0.75rem;
+        border: 1px solid var(--border);
+        padding: 0.6rem 0.75rem;
+        font-family: inherit;
+        font-size: 0.9rem;
+        background: var(--panel-soft);
+        color: inherit;
+    }
+
+    .room-detail-textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 1px color-mix(in srgb, var(--primary) 40%, transparent);
+    }
+}
