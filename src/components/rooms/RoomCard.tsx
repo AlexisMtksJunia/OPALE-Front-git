@@ -1,11 +1,25 @@
 // src/components/rooms/RoomCard.tsx
 import React from 'react'
 import { Room, RoomType } from '../../models/Room'
-import icSalles from '../../assets/ic-salles.png'
+
+// Import des icônes par type
+import icTD from '../../assets/rooms/ic-room-td.png'
+import icTPE from '../../assets/rooms/ic-room-tp-electronique.png'
+import icTPN from '../../assets/rooms/ic-room-tp-numerique.png'
+import icProjet from '../../assets/rooms/ic-room-projet.png'
+import icAutre from '../../assets/rooms/ic-room-autre.png'
 
 interface RoomCardProps {
     room: Room
     onSelect: () => void
+}
+
+const ICONS_BY_TYPE: Record<RoomType, string> = {
+    TD: icTD,
+    TP_ELECTRONIQUE: icTPE,
+    TP_NUMERIQUE: icTPN,
+    PROJET: icProjet,
+    AUTRE: icAutre,
 }
 
 const ROOM_TYPE_LABELS: Record<RoomType, string> = {
@@ -16,17 +30,10 @@ const ROOM_TYPE_LABELS: Record<RoomType, string> = {
     AUTRE: 'Autre',
 }
 
-const ROOM_TYPE_SHORT: Record<RoomType, string> = {
-    TD: 'TD',
-    TP_ELECTRONIQUE: 'TPE',
-    TP_NUMERIQUE: 'TPN',
-    PROJET: 'PRJ',
-    AUTRE: 'AUT',
-}
-
 export default function RoomCard({ room, onSelect }: RoomCardProps) {
     const fullName = room.fullName || room.name
     const typeLabel = ROOM_TYPE_LABELS[room.mainType]
+    const icon = ICONS_BY_TYPE[room.mainType]
 
     const handleClick = () => {
         console.log('[ROOMS] Click room card', room)
@@ -36,12 +43,7 @@ export default function RoomCard({ room, onSelect }: RoomCardProps) {
     return (
         <article className="room-card" onClick={handleClick}>
             <div className="room-card-icon">
-                <img src={icSalles} alt="" className="room-card-base-icon" />
-                <span
-                    className={`room-card-type-pill room-card-type-pill-${room.mainType.toLowerCase()}`}
-                >
-                    {ROOM_TYPE_SHORT[room.mainType]}
-                </span>
+                <img src={icon} alt={typeLabel} className="room-card-base-icon" />
             </div>
 
             <div className="room-card-content">
