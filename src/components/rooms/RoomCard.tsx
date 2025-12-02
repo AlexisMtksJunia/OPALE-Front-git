@@ -3,11 +3,11 @@ import React from 'react'
 import { Room, RoomType } from '../../models/Room'
 
 // Import des icônes par type
-import icTD from '../../../assets/ic-room-td.png'
-import icTPE from '../../../assets/ic-room-tp-electronique.png'
-import icTPN from '../../../assets/ic-room-tp-numerique.png'
-import icProjet from '../../../assets/ic-room-projet.png'
-import icAutre from '../../../assets/ic-room-autre.png'
+import icTD from '../../assets/ic-room-td.png'
+import icTPE from '../../assets/ic-room-tp-electronique.png'
+import icTPN from '../../assets/ic-room-tp-numerique.png'
+import icProjet from '../../assets/ic-room-projet.png'
+import icAutre from '../../assets/ic-room-autre.png'
 
 interface RoomCardProps {
     room: Room
