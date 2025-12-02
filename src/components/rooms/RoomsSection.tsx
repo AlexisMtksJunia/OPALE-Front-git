@@ -27,7 +27,7 @@ export default function RoomsSection({ floor, rooms, onSelectRoom }: RoomsSectio
     return (
         <section className="rooms-section">
             <header
-                className="rooms-section-header"
+                className={`rooms-section-header ${isOpen ? 'is-open' : ''}`}
                 onClick={handleToggle}
                 role="button"
                 aria-expanded={isOpen}
